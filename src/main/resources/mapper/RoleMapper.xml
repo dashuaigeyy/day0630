@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yy.mapper.RoleMapper">
+
+    <select id="findAll" resultType="RoleBean">
+       SELECT * FROM t_role
+    </select>
+    <select id="findAllByid" resultType="RoleBean">
+       SELECT * FROM t_role where deptid =#{id};
+    </select>
+    <select id="findAllByrid" resultType="RoleBean">
+       SELECT * FROM t_role where rid =#{rid};
+    </select>
+    <update id="updateRole">
+UPDATE  t_role set deptid=#{deptid} WHERE rid = #{rid}
+    </update>
+
+    <select id="getPowerList" resultType="PowerBean">
+        select * from t_power
+    </select>
+    <select id="getIdsByRid" resultType="int">
+        select id from t_r_p where rid=#{rid}
+    </select>
+    <delete id="deleteRolePowerByRid">
+        delete from t_r_p where rid=#{rid}
+    </delete>
+    <insert id="insertRolePower">
+        insert into t_r_p(rid,id) values(#{rid},#{sid})
+    </insert>
+</mapper>
